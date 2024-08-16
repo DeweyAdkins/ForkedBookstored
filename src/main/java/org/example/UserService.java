@@ -8,6 +8,10 @@ public class UserService {
     private Map<String, User> userDatabase = new HashMap<>();
 
     public boolean registerUser(User user) {
+        if (user.getUsername() == null || user.getUsername().trim().isEmpty()) {
+            return false; // Invalid username
+        }
+
         if (userDatabase.containsKey(user.getUsername())) {
             return false; // User already exists
         }
